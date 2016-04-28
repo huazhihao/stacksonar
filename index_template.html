@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Stack Sonar - an OpenStack analysis tool</title>
+    <style type="text/css">
+    td {
+        vertical-align: top;
+    }
+
+    .line-number {
+        width: 30px;
+    }
+
+    .line-code {
+        width: 500px;
+    }
+
+    #main {
+        width: 100%;
+        height: 100%;
+    }
+
+    #stack {
+        width: 100%;
+        position: fixed;
+    }
+
+    #logtd {
+        width: 360px;
+    }
+    </style>
+</head>
+
+<body class="code-container">
+    <table id="main">
+        <tr>
+            <td id="logtd">
+                <table>
+                    {% for line in lines %}
+                    <tr>
+                        <td class="line-number">{{ loop.index0 + 1 }}</td>
+                        <td class="line-code">{{ line }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </td>
+            <td id="srctd">
+                <iframe id="stack" name="stack"></iframe>
+            </td>
+        </tr>
+</body>
+
+</html>
