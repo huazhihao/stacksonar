@@ -24,7 +24,7 @@ def gen_log_html(log_path, src_root, html_root="./html"):
         line = re.sub(u"\\x1b\[\d{1,3}(;\d{1,3})?m", "", line)
         # TODO: logging_exception_prefix logging_debug_format_suffix
         #       logging_default_format_string logging_context_format_string
-        repl = (u'<a href="%s/\g<2>.html#L\g<3>" ',
+        repl = (u'<a href="%s/\g<2>.html#L\g<3>" '
                 u'target="stack">\g<2>:\g<3></a>') % src_dir
 
         line = re.sub("("+src_root + u")([^:]+\.py):(\d+)", repl, line)
