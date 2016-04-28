@@ -5,30 +5,28 @@
     <meta charset="utf-8">
     <title>Stack Sonar - an OpenStack analysis tool</title>
     <style type="text/css">
+    body {
+        font-family: monospace;
+    }
+
     td {
         vertical-align: top;
     }
 
     .line-number {
         width: 30px;
-    }
-
-    .line-code {
-        width: 500px;
-    }
-
-    #main {
-        width: 100%;
-        height: 100%;
+        padding-right: 5px;
+        text-align: right;
+        color: #ccc;
     }
 
     #stack {
-        width: 100%;
+        width: 650px;
+        height: 0;
         position: fixed;
-    }
-
-    #logtd {
-        width: 360px;
+        top: 0;
+        border: 1px solid #444;
+        border-width: 0 1px 0 1px;
     }
     </style>
 </head>
@@ -51,5 +49,12 @@
             </td>
         </tr>
 </body>
+<script type="text/javascript">
+onload = function() {
+    document.getElementById("stack").style.height = screen.height + "px"
+    document.getElementById("main").style.width = screen.width + "px"
+    document.getElementById("logtd").style.width = (screen.width - 650) + "px"
+}
+</script>
 
 </html>
