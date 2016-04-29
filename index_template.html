@@ -84,7 +84,7 @@
     <iframe id="stack" name="stack"></iframe>
 </body>
 <script>
-onload = function() {
+onload = onresize = function() {
     document.getElementById("stack").style.height = screen.height + "px"
     document.getElementById("main").style.width = (screen.width - 690) + "px"
 }
