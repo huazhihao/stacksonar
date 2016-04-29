@@ -5,7 +5,7 @@ Taking advantage of <https://github.com/yinwang0/pysonar2>, Stack Sonar is an
 analysis tool that links OpenStack log files and libraries and represents them
 in a combined html-based UI like below.
 
-![screenshot](blob/master/screenshot.png?raw=true)
+![screenshot](//github.com/huazhihao/stacksonar/blob/master/screenshot.png?raw=true)
 
 JRE 8 is required by pysonar2. You may run `install_jre8.sh` to install JRE 8
 for an Ubuntu environment like devstack.
