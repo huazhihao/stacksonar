@@ -3,6 +3,8 @@
 import os
 import re
 import argparse
+from SimpleHTTPServer import SimpleHTTPRequestHandler
+from SocketServer import TCPServer
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -36,13 +38,21 @@ def gen_log_html(log_path, src_root, html_root="./html"):
     template.stream(lines=lines).dump(html_index)
 
 
+def serve(port, html_root="./html"):
+    os.chdir(html_root)
+    httpd = TCPServer(("", port), SimpleHTTPRequestHandler)
+    print("Serving at 0.0.0.0:%s" % port)
+    httpd.serve_forever()
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(
         "./stacksonar.py /opt/stack/nova/ /opt/stack/logs/n-cpu.log")
     parser.add_argument("src")
     parser.add_argument("log")
-
+    parser.add_argument("--port", type=int, default=9000)
     args = parser.parse_args()
 
     run_pysonar(args.src)
     gen_log_html(args.log, args.src)
+    serve(args.port)
