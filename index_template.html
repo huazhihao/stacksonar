@@ -4,9 +4,42 @@
 <head>
     <meta charset="utf-8">
     <title>Stack Sonar - an OpenStack analysis tool</title>
-    <style type="text/css">
+    <style>
+    html,
+    body,
+    * {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        font: inherit;
+        vertical-align: baseline;
+    }
+
+    body {
+        line-height: 1;
+    }
+
+    a {
+        color: #337ab7;
+        text-decoration: none;
+    }
+
+    a:visited,
+    a:hover,
+    a:focus {
+        color: #23527c;
+        text-decoration: underline;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
     body {
         font-family: monospace;
+        color: #666;
     }
 
     td {
@@ -14,10 +47,17 @@
     }
 
     .line-number {
-        width: 30px;
+        width: 50px;
         padding-right: 5px;
         text-align: right;
         color: #ccc;
+    }
+
+    #main {
+        table-layout: fixed;
+        word-wrap: break-word;
+        display: inline-table;
+        overflow: scroll;
     }
 
     #stack {
@@ -25,6 +65,7 @@
         height: 0;
         position: fixed;
         top: 0;
+        right: 0;
         border: 1px solid #444;
         border-width: 0 1px 0 1px;
     }
@@ -33,27 +74,19 @@
 
 <body class="code-container">
     <table id="main">
+        {% for line in lines %}
         <tr>
-            <td id="logtd">
-                <table>
-                    {% for line in lines %}
-                    <tr>
-                        <td class="line-number">{{ loop.index0 + 1 }}</td>
-                        <td class="line-code">{{ line }}</td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </td>
-            <td id="srctd">
-                <iframe id="stack" name="stack"></iframe>
-            </td>
+            <td class="line-number">{{ loop.index0 + 1 }}</td>
+            <td class="line-code">{{ line }}</td>
         </tr>
+        {% endfor %}
+    </table>
+    <iframe id="stack" name="stack"></iframe>
 </body>
-<script type="text/javascript">
+<script>
 onload = function() {
     document.getElementById("stack").style.height = screen.height + "px"
-    document.getElementById("main").style.width = screen.width + "px"
-    document.getElementById("logtd").style.width = (screen.width - 650) + "px"
+    document.getElementById("main").style.width = (screen.width - 690) + "px"
 }
 </script>
 
